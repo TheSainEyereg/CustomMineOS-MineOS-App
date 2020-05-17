@@ -1,5 +1,5 @@
 {
-	warn = "Warning! \nSave all your files before starting the firmware, the computer will restart!",
+	warn = "Warning! Save all your files before starting the firmware, the computer will restart!",
 	inst = "Start flashing",
 	comp = "Flashing complete",
 }
