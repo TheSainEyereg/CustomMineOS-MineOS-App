@@ -2,10 +2,14 @@
 local GUI = require("GUI")
 local system = require("System")
 local fs = require("Filesystem")
+local SD = fs.path(system.getCurrentScript())
 local internet = require("internet")
 local component = require("Component")
 local localization = system.getLocalization(SD .. "/Localizations/")
 local EFI = component.eeprom
+
+local workspace, window = system.addWindow(GUI.tabbedWindow(1, 1, 118, 33, 0xF0F0F0))
+local layout = window:addChild(GUI.layout(1, 3, window.width, window.height, 1, 1))
 
 -----------------------------------functions---------------------------------------------------
 local function flashEFI(url)
@@ -30,11 +34,6 @@ return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0xD2D2D2, 0x696969, 0x4B4B
 end
 
 -------------------------------------------main------------------------------------------------
-
-local workspace, window = system.addWindow(GUI.tabbedWindow(1, 1, 118, 33, 0xF0F0F0))
- 
-local layout = window:addChild(GUI.layout(1, 3, window.width, window.height, 1, 1))
-
 Text(localization.warn)
 Button(localization.inst).onTouch = function()
 	flashEFI("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomEFI.lua")
