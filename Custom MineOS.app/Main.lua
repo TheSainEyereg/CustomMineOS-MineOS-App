@@ -27,7 +27,7 @@ local function replaceloader(url)
 end
 
 local function addText(text)
-	layout:addChild(GUI.textBox(1, 1, 50, 1, nil, 0xFEFEFE, {text}, 1, 0, 0, true, true))
+	layout:addChild(GUI.textBox(1, 1, 60, 1, nil, 0xFEFEFE, {text}, 1, 0, 0, true, true))
 end
 
 local function addButton(text)
@@ -42,6 +42,8 @@ addButton(localization.inst).onTouch = function()
 	GUI.alert(localization.comp)
     computer.shutdown(true)
 end
+addText(localization.atxt)
+addText("https://github.com/TheSainEyereg/CustomMineOS-MineOS-App")
 
 ----------------------------------------------------------------------------------------------------
 

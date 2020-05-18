@@ -2,4 +2,5 @@
 	warn = "Warning! Save all your files before starting the firmware, the computer will restart!",
 	inst = "Start flashing",
 	comp = "Flashing complete",
+	atxt = "About all bugs report to the AppMarket page or visit official github repo:",
 }
