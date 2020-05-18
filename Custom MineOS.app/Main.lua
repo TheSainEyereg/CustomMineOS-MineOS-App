@@ -16,6 +16,7 @@ local function flashEFI(url)
 	internet.download(url, "/temp.lua")
 	local a = fs.read("/temp.lua")
 	EFI.set(a)
+	EFI.setLabel("Custom MineOS")
 	fs.remove("/temp.lua")
 end
 
@@ -25,17 +26,17 @@ local function replaceloader(url)
 	fs.rename("/replace.lua", "/OS.lua")
 end
 
-local function Text(txt)
-	layout:addChild(GUI.text(1, 1, 0x2D2D2D, txt))
+local function addText(text)
+	layout:addChild(GUI.text(1, 1, 0x2D2D2D, text))
 end
 
-local function Button(txt)
-return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0xD2D2D2, 0x696969, 0x4B4B4B, 0xF0F0F0, txt))
+local function addButton(text)
+return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0xD2D2D2, 0x696969, 0x4B4B4B, 0xF0F0F0, text))
 end
 
 -------------------------------------------main------------------------------------------------
-Text(localization.warn)
-Button(localization.inst).onTouch = function()
+addText(localization.warn)
+addButton(localization.inst).onTouch = function()
 	flashEFI("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomEFI.lua")
 	replaceloader("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/OS.lua")
 	GUI.alert(localization.comp)
