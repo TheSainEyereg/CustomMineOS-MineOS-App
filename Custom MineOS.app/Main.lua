@@ -8,14 +8,14 @@ local component = require("Component")
 local localization = system.getLocalization(SD .. "/Localizations/")
 local EFI = component.eeprom
 
-local workspace, window = system.addWindow(GUI.tabbedWindow(1, 1, 118, 33, 0xF0F0F0))
-local layout = window:addChild(GUI.layout(1, 3, window.width, window.height, 1, 1))
-
+local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 70, 20, 0x000000))
+local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 1))
 -----------------------------------functions---------------------------------------------------
 local function flashEFI(url)
 	internet.download(url, "/temp.lua")
 	local a = fs.read("/temp.lua")
 	EFI.set(a)
+	EFI.setLabel("Custom MineOS")
 	fs.remove("/temp.lua")
 end
 
@@ -26,11 +26,11 @@ local function replaceloader(url)
 end
 
 local function addText(text)
-	layout:addChild(GUI.text(1, 1, 0x2D2D2D, text))
+	layout:addChild(GUI.textBox(1, 1, 50, 1, nil, 0xFEFEFE, {text}, 1, 0, 0, true, true))
 end
 
 local function addButton(text)
-return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0xD2D2D2, 0x696969, 0x4B4B4B, 0xF0F0F0, text))
+return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0x2E2E2E, 0x919191, 0x5C5C5C, 0xF0F0F0, text))
 end
 
 -------------------------------------------main------------------------------------------------
@@ -41,4 +41,11 @@ addButton(localization.inst).onTouch = function()
 	GUI.alert(localization.comp)
     computer.shutdown(true)
 end
-	
+
+----------------------------------------------------------------------------------------------------
+
+window.onResize = function(newWidth, newHeight)
+  window.backgroundPanel.width, window.backgroundPanel.height = newWidth, newHeight
+  window.titlePanel.width, window.titleLabel.width = newWidth, newWidth
+  layout.width, layout.height = newWidth, newHeight
+end
