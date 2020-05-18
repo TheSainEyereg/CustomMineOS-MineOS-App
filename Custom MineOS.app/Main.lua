@@ -10,6 +10,7 @@ local EFI = component.eeprom
 
 local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 70, 20, 0x000000))
 local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 1))
+
 -----------------------------------functions---------------------------------------------------
 local function flashEFI(url)
 	internet.download(url, "/temp.lua")
