@@ -16,7 +16,6 @@ local function flashEFI(url)
 	internet.download(url, "/temp.lua")
 	local a = fs.read("/temp.lua")
 	EFI.set(a)
-	EFI.setLabel("Custom MineOS")
 	fs.remove("/temp.lua")
 end
 
