@@ -46,6 +46,5 @@ end
 
 window.onResize = function(newWidth, newHeight)
   window.backgroundPanel.width, window.backgroundPanel.height = newWidth, newHeight
-  window.titlePanel.width, window.titleLabel.width = newWidth, newWidth
   layout.width, layout.height = newWidth, newHeight
 end
