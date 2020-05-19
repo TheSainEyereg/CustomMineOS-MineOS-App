@@ -38,7 +38,7 @@ end
 addText(localization.warn)
 addButton(localization.inst).onTouch = function()
 	flashEFI("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomEFI.lua")
-	replaceloader("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/OS.lua")
+	replaceloader("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomOS.lua")
 	GUI.alert(localization.comp)
     computer.shutdown(true)
 end
