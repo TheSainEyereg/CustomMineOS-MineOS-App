@@ -1,4 +1,4 @@
-----------------------------------------core---------------------------------------------------
+----------------------------------------core----------------------------------------
 local GUI = require("GUI")
 local system = require("System")
 local fs = require("Filesystem")
@@ -11,7 +11,7 @@ local EFI = component.eeprom
 local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 70, 20, 0x000000))
 local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 1))
 
------------------------------------functions---------------------------------------------------
+----------------------------------------func----------------------------------------
 local function flashEFI(url)
 	internet.download(url, "/temp.lua")
 	local a = fs.read("/temp.lua")
@@ -34,7 +34,7 @@ local function addButton(text)
 return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0x2E2E2E, 0x919191, 0x5C5C5C, 0xF0F0F0, text))
 end
 
--------------------------------------------main------------------------------------------------
+----------------------------------------main----------------------------------------
 addText(localization.warn)
 addButton(localization.inst).onTouch = function()
 	flashEFI("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomEFI.lua")
@@ -45,7 +45,7 @@ end
 addText(localization.atxt)
 addText("https://github.com/TheSainEyereg/CustomMineOS-MineOS-App")
 
-----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 window.onResize = function(newWidth, newHeight)
   window.backgroundPanel.width, window.backgroundPanel.height = newWidth, newHeight
