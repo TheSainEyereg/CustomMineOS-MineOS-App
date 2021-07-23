@@ -31,7 +31,7 @@ local function addText(text)
 end
 
 local function addButton(text)
-return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0x2E2E2E, 0x919191, 0x5C5C5C, 0xF0F0F0, text))
+	return layout:addChild(GUI.roundedButton(1, 1, 36, 3, 0x2E2E2E, 0x919191, 0x5C5C5C, 0xF0F0F0, text))
 end
 
 ----------------------------------------main----------------------------------------
