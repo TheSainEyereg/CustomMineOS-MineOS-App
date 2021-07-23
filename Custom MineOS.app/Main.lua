@@ -13,17 +13,16 @@ local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 
 
 ----------------------------------------func----------------------------------------
 local function flashEFI(url)
-	internet.download(url, "/temp.lua")
-	local a = fs.read("/temp.lua")
-	EFI.set(a)
+	internet.download(url, "/tempEFI.lua")
+	EFI.set(fs.read("/tempEFI.lua"))
 	EFI.setLabel("Custom MineOS")
-	fs.remove("/temp.lua")
+	fs.remove("/tempEFI.lua")
 end
 
 local function replaceloader(url)
-	internet.download(url, "/replace.lua")
+	internet.download(url, "/tempOS.lua")
 	fs.remove("/OS.lua")
-	fs.rename("/replace.lua", "/OS.lua")
+	fs.rename("/tempOS.lua", "/OS.lua")
 end
 
 local function addText(text)
@@ -40,7 +39,7 @@ addButton(localization.inst).onTouch = function()
 	flashEFI("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomEFI.lua")
 	replaceloader("https://raw.githubusercontent.com/TheSainEyereg/CustomMineOS-MineOS-App/master/Custom/CustomOS.lua")
 	GUI.alert(localization.comp)
-    computer.shutdown(true)
+	computer.shutdown(true)
 end
 addText(localization.atxt)
 addText("https://github.com/TheSainEyereg/CustomMineOS-MineOS-App")
@@ -48,6 +47,6 @@ addText("https://github.com/TheSainEyereg/CustomMineOS-MineOS-App")
 ------------------------------------------------------------------------------------
 
 window.onResize = function(newWidth, newHeight)
-  window.backgroundPanel.width, window.backgroundPanel.height = newWidth, newHeight
-  layout.width, layout.height = newWidth, newHeight
+	  window.backgroundPanel.width, window.backgroundPanel.height = newWidth, newHeight
+	  layout.width, layout.height = newWidth, newHeight
 end
